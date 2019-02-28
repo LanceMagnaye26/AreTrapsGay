@@ -45,6 +45,9 @@ namespace TodoApi
                 app.UseHsts();
             }
 
+
+            app.UseCors("AllowMyOrigin");
+
             app.UseCors(options => options.WithOrigins("http://localhost:4200"));
             app.UseDefaultFiles();
             app.UseStaticFiles();
