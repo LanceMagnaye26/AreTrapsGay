@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using TodoApi.Models;
 namespace TodoApi.Controllers
 {
     [Route("api/Trap")]
+    [EnableCors("AllowMyOrigin")]
     [ApiController]
     public class TrapController : ControllerBase
     {
@@ -18,6 +20,7 @@ namespace TodoApi.Controllers
             _context = context;
         }
         // GET: api/Trap
+        [EnableCors("AllowMyOrigin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TrapItem>>> GetTrapItems()
         {
@@ -25,6 +28,7 @@ namespace TodoApi.Controllers
         }
 
         // GET: api/Trap/5
+        [EnableCors("AllowMyOrigin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<TrapItem>> GetTrapItem(long id)
         {
@@ -39,6 +43,7 @@ namespace TodoApi.Controllers
         }
 
         // POST: api/Trap
+        [EnableCors("AllowMyOrigin")]
         [HttpPost]
         public async Task<ActionResult<TrapItem>> PostTrapItem(TrapItem item)
         {
@@ -49,6 +54,7 @@ namespace TodoApi.Controllers
         }
 
         // PUT: api/Trap/5
+        [EnableCors("AllowMyOrigin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTrapItem(int id, TrapItem item)
         {
@@ -64,6 +70,7 @@ namespace TodoApi.Controllers
         }
 
         // DELETE: api/Trap/5
+        [EnableCors("AllowMyOrigin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTrapItem(int id)
         {
