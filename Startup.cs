@@ -27,7 +27,11 @@ namespace TodoApi
             services.AddDbContext<TrapContext>(opt =>
                 opt.UseInMemoryDatabase("TrapList"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddCors();
+            services.AddCors(options =>
+{
+    options.AddPolicy("AllowMyOrigin",
+    builder => builder.AllowAnyOrigin());
+});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP 
@@ -47,8 +51,6 @@ namespace TodoApi
 
 
             app.UseCors("AllowMyOrigin");
-
-            app.UseCors(options => options.WithOrigins("http://localhost:4200"));
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseHttpsRedirection();
