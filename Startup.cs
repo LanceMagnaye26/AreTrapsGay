@@ -24,6 +24,8 @@ namespace TodoApi
         {
             services.AddDbContext<TodoContext>(opt =>
                 opt.UseInMemoryDatabase("TodoList"));
+            services.AddDbContext<TrapContext>(opt =>
+                opt.UseInMemoryDatabase("TrapList"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
